@@ -8,6 +8,7 @@ public class NextDate {
      * Valid year values range from 2021 to 9999.
      * If correct input data, the date of the next day and additionally the current system date will be displayed.
      */
+
     public static final int MAXIMUM_DAY_OF_MONTH = 31;
     public static final int MAXIMUM_MONTH_OF_YEAR = 12;
     public static final int[] NON_LEAP_YEAR_DAY_OF_MONTH_QUANTITY = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
