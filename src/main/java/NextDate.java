@@ -14,9 +14,9 @@ public class NextDate {
     public static final int[] LEAP_YEAR_DAY_OF_MONTH_QUANTITY = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public static void main(String[] args) {
-        int day = getNumber("Введите текущий день месяца", "Неверный ввод. День - целое число в диапазоне от 1 до 31", 1, MAXIMUM_DAY_OF_MONTH);
-        int month = getNumber("Введите текущий месяц", "Неверный ввод. Месяц - целое число в диапазоне от 1 до 12", 1, MAXIMUM_MONTH_OF_YEAR);
-        int year = getNumber("Введите текущий год", "Неверный ввод. Год - целое число в диапазоне от 2021 до 9999)", 2021, 9999);
+        int day = getNumber("Введите день месяца:", "Неверный ввод. День - целое число в диапазоне от 1 до 31", 1, MAXIMUM_DAY_OF_MONTH);
+        int month = getNumber("Введите номер месяца:", "Неверный ввод. Месяц - целое число в диапазоне от 1 до 12", 1, MAXIMUM_MONTH_OF_YEAR);
+        int year = getNumber("Введите значение года (от 2021 до 9999):", "Неверный ввод. Год - целое число в диапазоне от 2021 до 9999)", 2021, 9999);
         printDatesInfo(day, month, year);
     }
 
@@ -69,7 +69,7 @@ public class NextDate {
 
     private static void printDatesInfo(int day, int month, int year) {
         if (!isInputDateRight(day, month, year)) {
-            System.out.println("Введенная дата не соответствует календарю. Вывод следующей даты невозможен");
+            System.out.println("Введенная дата не соответствует календарю. Вывод следующей даты невозможен.");
         } else {
             System.out.printf("Вы ввели дату - %d %d %d%n", day, month, year);
 
