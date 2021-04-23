@@ -38,6 +38,7 @@ public class NextDate {
                     System.out.println(errorMessage);
                     continue;
                 }
+
                 isRightInput = true;
             } else {
                 System.out.println(errorMessage);
@@ -52,17 +53,18 @@ public class NextDate {
         return year % 4 == 0 || (year % 100 == 0 && year % 400 == 0);
     }
 
-    private static boolean isNextDayInNewMonth(int day, int month) {
-        return day == LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1] || day == NON_LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1];
+    private static boolean isNextDayInNewMonth(int day, int month, int year) {
+        return isYearLeap(year) ? day == LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1] : day == NON_LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1];
     }
 
-    private static boolean isNextDayInNewYear(int day, int month) {
-        return month == 12 && isNextDayInNewMonth(day, month);
+    private static boolean isNextDayInNewYear(int day, int month, int year) {
+        return month == 12 && isNextDayInNewMonth(day, month, year);
     }
 
     private static boolean isInputDateRight(int day, int month, int year) {
         if (isYearLeap(year) && day <= LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1]) {
             return true;
+
         } else {
             return !isYearLeap(year) && day <= NON_LEAP_YEAR_DAY_OF_MONTH_QUANTITY[month - 1];
         }
@@ -71,6 +73,7 @@ public class NextDate {
     private static void printDatesInfo(int day, int month, int year) {
         if (!isInputDateRight(day, month, year)) {
             System.out.println("Введенная дата не соответствует календарю. Вывод следующей даты невозможен.");
+
         } else {
             System.out.printf("Вы ввели дату - %d %d %d%n", day, month, year);
 
@@ -83,10 +86,12 @@ public class NextDate {
     }
 
     private static int[] nextDate(int day, int month, int year) {
-        if (isNextDayInNewYear(day, month)) {
+        if (isNextDayInNewYear(day, month, year)) {
             return new int[]{1, 1, year + 1};
-        } else if (isNextDayInNewMonth(day, month)) {
+
+        } else if (isNextDayInNewMonth(day, month, year)) {
             return new int[]{1, month + 1, year};
+
         } else {
             return new int[]{day + 1, month, year};
         }
